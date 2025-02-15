@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 
 # Update packages and install ssh
-RUN apt-get update && apt-get install -y ssh locales
+RUN apt-get update && apt-get install -y ssh cron locales
 RUN rm -rf /var/lib/apt/lists/*
 
 # Set locales to de_AT
@@ -24,9 +24,16 @@ RUN chown sftp_user:sftp_user /sftp_server/downloads
 
 # Copy necessary files
 COPY files/sshd_config /etc/ssh/sshd_config
-RUN chmod 600 /etc/ssh/sshd_config
+RUN chmod 644 /etc/ssh/sshd_config
 COPY files/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
+
+# Initialize crontab
+COPY files/cronjob /etc/cron.d/cronjob
+RUN crontab /etc/cron.d/cronjob
+RUN chmod 644 /etc/cron.d/cronjob
+COPY files/purge_files.sh /purge_files.sh
+RUN chmod +x /purge_files.sh
 
 EXPOSE 22
 ENTRYPOINT [ "/docker-entrypoint.sh" ]

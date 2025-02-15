@@ -5,3 +5,5 @@ services:
     volumes:
       - ./files/sshd_config:/etc/ssh/sshd_config
       - ./files/docker-entrypoint.sh:/docker-entrypoint.sh
+      - ./files/cronjob:/etc/cron.d/cronjob
+      - ./files/purge_files.sh:/purge_files.sh
