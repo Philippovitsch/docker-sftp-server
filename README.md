@@ -40,3 +40,10 @@ SFTP_PASSWORD: "YOUR_PASSWORD_GOES_HERE"
 - Host: `127.0.0.1`
 - Port: `22`
 - Protocol: `SFTP - SSH File Transfer Protocol`
+
+# Mock mode
+
+If you want to use this sFTP server for testing purposes, you can enable a mock mode to prevent clutter. Just set `MOCK_MODE` to `true` in your `docker-compose.override.yml`.
+
+> [!IMPORTANT]
+> All uploaded files are getting deleted regularly as defined in the [Cronjob file](https://github.com/Philippovitsch/docker-sftp-server/blob/main/files/cronjob)!
