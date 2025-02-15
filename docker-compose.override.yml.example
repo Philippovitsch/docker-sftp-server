@@ -2,6 +2,7 @@ services:
   sftp-server:
     environment:
       SFTP_PASSWORD: ""
+      MOCK_MODE: ""
     volumes:
       - ./files/sshd_config:/etc/ssh/sshd_config
       - ./files/docker-entrypoint.sh:/docker-entrypoint.sh

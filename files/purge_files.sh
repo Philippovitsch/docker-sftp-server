@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/usr/bin/sh
+
+if [ -z "${MOCK_MODE}" ] || [ "${MOCK_MODE}" != "true" ]; then
+  exit 0;
+fi
 
 echo "Delete all files from sFTP..."
 
