@@ -13,7 +13,7 @@ RUN mkdir /var/run/sshd
 
 # Configure sFTP user
 RUN useradd -d /home/sftp_user sftp_user 
-RUN echo "sftp_user:change_me" | chpasswd
+RUN echo "sftp_user:sftp_user" | chpasswd
 
 # Create sFTP filepaths
 RUN mkdir -p /sftp_server/uploads

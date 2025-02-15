@@ -1,5 +1,7 @@
 services:
   sftp-server:
+    environment:
+      SFTP_PASSWORD: ""
     volumes:
       - ./files/sshd_config:/etc/ssh/sshd_config
       - ./files/docker-entrypoint.sh:/docker-entrypoint.sh
