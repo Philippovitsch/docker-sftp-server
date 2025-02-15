@@ -1,0 +1,15 @@
+name: sftp-server
+
+services:
+  sftp-server:
+    # image: sftp:latest
+    build:
+      dockerfile: Dockerfile
+    environment:
+      SFTP_PASSWORD: "FQskGVhpQMfpAuIzf9X9"
+    ports:
+      - 22:22
+    networks:
+      default:
+        aliases:
+          - wso2-sftp

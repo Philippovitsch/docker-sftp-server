@@ -1,0 +1,8 @@
+# VSCode
+.vscode
+
+# IntelliJ
+.idea
+
+# Docker
+docker-compose.override.yml
