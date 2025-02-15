@@ -2,9 +2,9 @@ FROM ubuntu:24.04
 
 # Update packages and install ssh
 RUN apt-get update && apt-get install -y ssh locales
+RUN rm -rf /var/lib/apt/lists/*
 
 # Set locales to de_AT
-RUN rm -rf /var/lib/apt/lists/*
 RUN localedef -i de_AT -c -f UTF-8 -A /usr/share/locale/locale.alias de_AT.UTF-8
 ENV LANG de_AT.utf8
 
@@ -12,7 +12,7 @@ ENV LANG de_AT.utf8
 RUN mkdir /var/run/sshd
 
 # Configure sFTP user
-RUN useradd -d /home/sftp_user sftp_user 
+RUN useradd sftp_user
 RUN echo "sftp_user:sftp_user" | chpasswd
 
 # Create sFTP filepaths
